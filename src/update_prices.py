@@ -3,10 +3,9 @@ import pandas as pd
 import json
 import pymysql
 import sys
-from DBConnection import DBConnection
+from DBConnection import get_connection
 
-dbc = DBConnection()
-connection = dbc.get_connection()
+connection = get_connection()
 
 def insert_prices (ticker, ohlc_prices, conn):
     for r in ohlc_prices.itertuples():
