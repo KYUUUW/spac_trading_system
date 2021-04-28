@@ -1,0 +1,2 @@
+class DurationAnalyzer:
+    def

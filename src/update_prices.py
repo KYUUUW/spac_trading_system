@@ -3,16 +3,10 @@ import pandas as pd
 import json
 import pymysql
 import sys
+from DBConnection import DBConnection
 
-db_config = json.loads(open('../env/db_config.json', 'r').read())
-connection = pymysql.connect(host=db_config['host'],
-                             port=db_config['port'],
-                             db=db_config['db'],
-                             user=db_config['user'],
-                             passwd=db_config['passwd'],
-                             autocommit=True,
-                             charset='utf8'
-                             )
+dbc = DBConnection()
+connection = dbc.get_connection()
 
 def insert_prices (ticker, ohlc_prices, conn):
     for r in ohlc_prices.itertuples():
