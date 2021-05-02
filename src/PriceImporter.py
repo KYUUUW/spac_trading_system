@@ -1,4 +1,4 @@
-from DBConnection import get_connection
+from src.DBConnection import get_connection
 import pandas as pd
 
 connection = get_connection()
