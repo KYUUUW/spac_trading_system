@@ -5,8 +5,6 @@ import pymysql
 import sys
 from DBConnection import get_connection
 
-connection = get_connection()
-
 def insert_prices (ticker, ohlc_prices, conn):
     for r in ohlc_prices.itertuples():
         sql = f"REPLACE INTO prices values ('{ticker}', "\
@@ -38,7 +36,7 @@ def update_spac_prices(from_ipo_date):
         print(f"Fetching {r[3]}")
 
         ohlc_prices = fetch_price(r[2], r[15], r[6])
-        insert_prices(r[2], ohlc_prices, connection)
+        insert_prices(r[2], ohlc_prices, get_connection())
 
 if __name__ == '__main__':
     from_date = sys.argv[1]
